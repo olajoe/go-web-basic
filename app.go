@@ -3,17 +3,21 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hey Welcome to my website your path is: %s\n", r.URL.Path)
+	vars := mux.Vars(r)
+	country := vars["name"]
+	club := vars["clubName"]
+	fmt.Fprintf(w, "You favorite club is %s in %s", club, country)
 }
 
 func main() {
-	http.HandleFunc("/", indexHandler)
+	r := mux.NewRouter()
 
-	fs := http.FileServer(http.Dir("static/"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	r.HandleFunc("/countries/{name}/clubs/{clubName}", indexHandler).Methods("GET")
 
-	http.ListenAndServe(":8000", nil)
+	http.ListenAndServe(":8000", r)
 }
