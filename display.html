@@ -1,0 +1,10 @@
+<h1> {{.CountryName}}  </h1>
+<ul>
+    {{range .ClubDetails}}
+        {{if .LeagueChampion}}
+            <li>  {{.ClubName}} in {{.Address}} won Calcio Serie A </li>
+        {{else}}
+            <li> {{.ClubName}} in {{.Address}} never won Calcio Serie A </li>
+        {{end}}
+    {{end}}
+</ul>
