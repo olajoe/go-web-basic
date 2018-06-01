@@ -17,7 +17,7 @@ type clubData struct {
 }
 
 func homePage(w http.ResponseWriter, r *http.Request) {
-	tmp := template.Must(template.ParseFiles("display.html"))
+	tmp := template.Must(template.ParseFiles("templates/display.html"))
 	data := clubData{
 		CountryName: "Italy",
 		ClubDetails: []clubDetail{
