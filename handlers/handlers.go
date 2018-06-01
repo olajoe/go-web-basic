@@ -7,5 +7,6 @@ import (
 func Router() *mux.Router {
 	r := mux.NewRouter()
 	r.HandleFunc("/home", homePage).Methods("GET")
+	r.HandleFunc("/form", formContact).Methods("POST")
 	return r
 }

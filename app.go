@@ -1,7 +1,7 @@
 package main
 
 import (
-	"joe/joe-go-api/handlers"
+	"joe/go-web-basic/handlers"
 	"net/http"
 )
 
